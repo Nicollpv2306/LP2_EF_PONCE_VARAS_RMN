@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<title>Reporte de Productos</title>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        header img {
+            height: 40%;
+        }
+        header .company-info {
+            text-align: right;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        table, th, td {
+            border: 1px solid #000;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlGyZ53njXmOmE20tjed-vGoVOv7QhEpJcyJWjcjMui_wSzp-UXLHNx0QnrjxX6wXFCyE&usqp=CAU" alt="Company Logo">
+    <div class="company-info">
+        <h2>EF ROSA MARIA NICOLL PONCE VARAS</h2>
+    </div>
+    
+   
+</header>
+<h1 style="text-align: center; text-decoration: underline;">Reporte de lista de productos</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Categoria</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="producto : ${producto}">
+        <td th:text="${producto.id}"></td>
+        <td th:text="${producto.nombreProducto}"></td>
+        <td th:text="'S/ ' + ${producto.precio}"></td>
+        <td th:text="${producto.stock}"></td>
+        <td th:text="${producto.categoria}"></td>
+    </tr>
+    </tbody>
+</table>
+ <div class="date">
+	<p style="font-weight: bold; font-size: 18pt;">La fecha del reporte es: <span th:text="${#dates.format(new java.util.Date(), 'dd/MM/yyyy')}"></span></p>
+   <!-- <p style="font-weight: bold; font-size: 18pt;">El fue reporte generado por: <span th:text="${nombre_usuario}"></span></p> -->
+</div>
+</body>
+</html>
